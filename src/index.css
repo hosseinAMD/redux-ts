@@ -14,3 +14,84 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.container {
+  width: 50%;
+  margin: auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.treats {
+  display: flex;
+  flex-direction: column;
+}
+
+.treats_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(128, 128, 128, 0.253);
+  border-radius: 1rem;
+}
+
+.treats_item span {
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.treats_paid {
+  background: #4e9b02;
+}
+
+.treats_pending {
+  background: #9b1902;
+}
+
+.treats_button {
+  background: #039292;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_input {
+  margin: 1rem 0;
+  border-radius: 1rem;
+  border: 5px solid transparent;
+  transition: 300ms;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: black;
+}
+
+.form_input:focus-visible {
+  outline: none;
+}
+
+.form_input:focus {
+  border: 5px solid #039292;
+}
+
+.form_submit {
+  background: #039292;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
