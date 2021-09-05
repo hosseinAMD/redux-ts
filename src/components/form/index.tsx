@@ -1,5 +1,7 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router";
+import { postTreat } from "../../server-config";
 
 const Form: React.FC = () => {
   const [person, setPerson] = useState<string>("");
@@ -17,7 +19,13 @@ const Form: React.FC = () => {
 
   const addToList = (e: FormEvent) => {
     e.preventDefault();
-    push("/");
+    axios
+      .post(postTreat, { person, treat })
+      .then((res) => {
+        console.log(res.data);
+        push("/");
+      })
+      .catch((err) => console.error(err));
   };
 
   return (

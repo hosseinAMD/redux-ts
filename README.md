@@ -2,6 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Install server requirements
+
+Install [json-server](https://www.npmjs.com/package/json-server) globally to be able to run simulated server:
+
+### `npm install -g json-server`
+
+## Running Server
+
+In the project directory, you can run
+
+### `json-server --watch db.json --port 3004`
+
+This command will run server on port `3004`. Feel free to change the port but make sure to change `baseURL` in `server-config.ts` file.
+
 ## Available Scripts
 
 In the project directory, you can run:

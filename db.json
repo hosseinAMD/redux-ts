@@ -1,0 +1,27 @@
+{
+  "treats": [
+    {
+      "id": 1,
+      "person": "Armin",
+      "treat": "Food",
+      "paid": false
+    },
+    {
+      "id": 2,
+      "person": "Mohammad Reza",
+      "treat": "Zhelato",
+      "paid": true
+    },
+    {
+      "person": "Hossein",
+      "treat": "Food",
+      "paid": false,
+      "id": 3
+    },
+    {
+      "person": "Esmaeil",
+      "treat": "Sweets",
+      "id": 4
+    }
+  ]
+}

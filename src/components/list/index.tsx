@@ -1,12 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { mockTreats } from "../../data/mock-treats";
+import { Treat } from "../../models/Treat";
+import { getTreats } from "../../server-config";
 
 const List: React.FC = () => {
+  const [treats, setTreats] = useState<Treat[]>([]);
+
+  useEffect(() => {
+    axios
+      .get(getTreats)
+      .then((res) => setTreats(res.data || []))
+      .catch(() => console.error("API fetch error"));
+  }, []);
+
   return (
     <div className="treats">
       <h2>The list of treats must be done!</h2>
-      {mockTreats.map(({ person, treat, paid }, index) => (
-        <div key={index} className="treats_item">
+      {treats.map(({ id, person, treat, paid }) => (
+        <div key={id} className="treats_item">
           <div className="treats_title">
             <p>
               <strong>{person}</strong> must treat <strong>{treat}</strong>
