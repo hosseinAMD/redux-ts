@@ -1,11 +1,14 @@
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router";
+import { useAppDispatch } from "../../hooks/redux-hook";
+import { treatSlice } from "../../redux/treatSlice";
 import { postTreat } from "../../server-config";
 
 const Form: React.FC = () => {
   const [person, setPerson] = useState<string>("");
   const [treat, setTreat] = useState<string>("");
+  const dispatch = useAppDispatch();
 
   const { push } = useHistory();
 
@@ -20,9 +23,9 @@ const Form: React.FC = () => {
   const addToList = (e: FormEvent) => {
     e.preventDefault();
     axios
-      .post(postTreat, { person, treat })
+      .post(postTreat, { person, treat, paid: false })
       .then((res) => {
-        console.log(res.data);
+        dispatch(treatSlice.actions.addTreat(res.data));
         push("/");
       })
       .catch((err) => console.error(err));

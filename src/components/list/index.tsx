@@ -1,18 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Treat } from "../../models/Treat";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hook";
+import { treatSlice } from "../../redux/treatSlice";
 import { getTreats } from "../../server-config";
 
 const List: React.FC = () => {
-  const [treats, setTreats] = useState<Treat[]>([]);
+  const treats = useAppSelector((state) => state.treats);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     axios
       .get(getTreats)
-      .then((res) => setTreats(res.data || []))
+      .then((res) => dispatch(treatSlice.actions.setTreats(res.data || [])))
       .catch(() => console.error("API fetch error"));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="treats">
@@ -26,9 +28,25 @@ const List: React.FC = () => {
           </div>
           <div>
             {paid ? (
-              <span className="treats_paid">PAID :D</span>
+              <span
+                onClick={() =>
+                  dispatch(
+                    treatSlice.actions.changeStatus({ id, value: false })
+                  )
+                }
+                className="treats_paid"
+              >
+                PAID :D
+              </span>
             ) : (
-              <span className="treats_pending">PENDING</span>
+              <span
+                onClick={() =>
+                  dispatch(treatSlice.actions.changeStatus({ id, value: true }))
+                }
+                className="treats_pending"
+              >
+                PENDING
+              </span>
             )}
           </div>
         </div>

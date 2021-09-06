@@ -19,8 +19,9 @@
       "id": 3
     },
     {
-      "person": "Esmaeil",
-      "treat": "Sweets",
+      "person": "Hossein",
+      "treat": "Food",
+      "paid": false,
       "id": 4
     }
   ]
